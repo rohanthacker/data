@@ -1,0 +1,65 @@
+// import { NULL, INTEGER, REAL, TEXT, BLOB, BOOLEAN } from "./SQL_TYPES";
+
+let types = {
+	NULL: "NULL",
+	INTEGER: "INTEGER",
+	REAL: "REAL",
+	TEXT: "TEXT",
+	BLOB: "BLOB",
+	BOOLEAN: "BOOLEAN"
+};
+
+interface FieldInterface {
+	type?: string;
+	unique?: boolean;
+	autoIncrement?: boolean;
+	null?: boolean;
+	primary_key?: boolean;
+	max_length?: number;
+}
+
+class Field {
+	type = types.TEXT;
+	unique = false;
+	autoIncrement = false;
+	null = false;
+	primary_key = false;
+	max_length = 255;
+
+	constructor(params?: FieldInterface) {
+		// this.type = params.type;
+		// this.null = params.null;
+		// this.unique = params.unique;
+		// this.max_length = params.max_length;
+		// this.primary_key = params.primary_key;
+		// this.autoIncrement = params.autoIncrement;
+	}
+}
+
+class VarcharField extends Field {
+	type = types.TEXT;
+	constructor(params?: FieldInterface) {
+		super(params);
+	}
+}
+
+class IntegerField extends Field {
+	type = types.INTEGER;
+	constructor(params?: FieldInterface) {
+		super(params);
+	}
+}
+
+class BooleanField extends Field {
+	type = types.BOOLEAN;
+	constructor(params?: FieldInterface) {
+		super(params);
+	}
+}
+
+// let x = new VarcharField();
+// let y = new IntegerField();
+// let z = new BooleanField();
+// console.log(x, y, z);
+
+export { VarcharField, BooleanField, IntegerField };
